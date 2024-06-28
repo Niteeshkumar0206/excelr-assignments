@@ -1,0 +1,132 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyOSTg4NE/fyuLmFlK5YNWTO",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Niteeshkumar0206/excelr-assignments/blob/main/Hypothesis%20testing%20assignment%20\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "txlIDMyLHP7c"
+      },
+      "outputs": [],
+      "source": [
+        "import numpy as np\n",
+        "from scipy.stats import norm"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Given data\n",
+        "sample_mean = 3050\n",
+        "theoretical_mean = 1000 + 5 * 600\n",
+        "std_dev = 5 * 25\n",
+        "n = 25\n",
+        "alpha = 0.05"
+      ],
+      "metadata": {
+        "id": "Yw9eVnRQItwj"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Calculate the test statistic (t)\n",
+        "t_statistic = (sample_mean - theoretical_mean) / (std_dev / np.sqrt(n))"
+      ],
+      "metadata": {
+        "id": "SP7soZeYJFpa"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Determine the critical value from the standard normal distribution\n",
+        "critical_value = norm.ppf(1 - alpha)"
+      ],
+      "metadata": {
+        "id": "5ybCJlQQJfcW"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Make a decision\n",
+        "if t_statistic > critical_value:\n",
+        "    conclusion = \"Reject the null hypothesis\"\n",
+        "else:\n",
+        "    conclusion = \"Fail to reject the null hypothesis\""
+      ],
+      "metadata": {
+        "id": "OKY8BDpPJtxp"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Conclusion\n",
+        "if conclusion == \"Reject the null hypothesis\":\n",
+        "    evidence = \"strong evidence\"\n",
+        "else:\n",
+        "    evidence = \"no strong evidence\"\n",
+        "\n",
+        "print(\"Test Statistic (t):\", t_statistic)\n",
+        "print(\"Critical Value:\", critical_value)\n",
+        "print(\"Decision:\", conclusion)\n",
+        "print(\"Conclusion: Based on the decision, there is\", evidence, \"to support the restaurant owners' claim.\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "brx7Bk3VJ8k8",
+        "outputId": "863d2186-c390-4871-bb67-5a79cc43bde1"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Test Statistic (t): -38.0\n",
+            "Critical Value: 1.6448536269514722\n",
+            "Decision: Fail to reject the null hypothesis\n",
+            "Conclusion: Based on the decision, there is no strong evidence to support the restaurant owners' claim.\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
